@@ -1,42 +1,45 @@
-// MySDK/src/api.js
+// chat_bot_sdk/src/api.js
 import { getHostname, getApiId, getApiSecret } from './config';
 
 const getChatId = async () => {
-  const response = await fetch(`${getHostname()}/getChatId`, {
-    method: 'GET',
+  const response = await fetch(`${getHostname()}/api/getChatId`, {
+    method: 'POST',
     headers: {
-      'Api-Id': getApiId(),
-      'Api-Secret': getApiSecret(),
+      'Content-Type': 'application/json',
     },
+    body: JSON.stringify({
+      api_id: getApiId(),
+      api_secret: getApiSecret(),
+    }),
   });
   return response.json();
 };
 
 const getChatResponse = async (chatId, message) => {
-  const response = await fetch(`${getHostname()}/getChatResponse`, {
+  const response = await fetch(`${getHostname()}/api/getChatResponse`, {
     method: 'POST',
     headers: {
-      'Api-Id': getApiId(),
-      'Api-Secret': getApiSecret(),
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
+      api_id: getApiId(),
+      api_secret: getApiSecret(),
       chat_id: chatId,
-      message,
+      message: message,
     }),
   });
   return response.json();
 };
 
 const endChat = async (chatId) => {
-  const response = await fetch(`${getHostname()}/endChat`, {
+  const response = await fetch(`${getHostname()}/api/endChat`, {
     method: 'POST',
     headers: {
-      'Api-Id': getApiId(),
-      'Api-Secret': getApiSecret(),
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
+      api_id: getApiId(),
+      api_secret: getApiSecret(),
       chat_id: chatId,
     }),
   });
