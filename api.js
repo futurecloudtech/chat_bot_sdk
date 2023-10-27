@@ -1,4 +1,3 @@
-// chat_bot_sdk/src/api.js
 import { getHostname, getApiId, getApiSecret } from './config';
 
 const getChatId = async () => {

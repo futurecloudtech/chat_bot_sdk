@@ -1,4 +1,3 @@
-// MySDK/src/config.js
 let hostname = '';
 let apiId = '';
 let apiSecret = '';
